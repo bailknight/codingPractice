@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     public Canvas inGameCanvas;
     public Canvas gameOverCanvas;
 
+    public int collectedCoins = 0;
+
     void Awake()
     {
         instance = this;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour {
             StartGame();
         }
     }
+
     public void StartGame()
     {
         PlayerController.instance.StartGame();
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour {
         SetGameState(Gamestate.menu);
     }
 
-void SetGameState(Gamestate newGameState)
+    void SetGameState(Gamestate newGameState)
     {
         if (newGameState == Gamestate.menu)
         {
@@ -72,5 +75,10 @@ void SetGameState(Gamestate newGameState)
         currentGameState = newGameState;
     }
 
+    public void CollectedCoin()
+    {
+        collectedCoins ++;
+    }
+    
     
 }

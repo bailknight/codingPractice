@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour {
+public class Collectable : MonoBehaviour
+{
 
     bool isCollected = false;
 
@@ -12,13 +13,25 @@ public class Collectable : MonoBehaviour {
         this.GetComponent<CircleCollider2D>().enabled = true;
         isCollected = false;
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Hide()
+    {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    void Collect()
+    {
+        isCollected = true;
+        Hide();
+        GameManager.instance.CollectedCoin();
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Collect();
+            Debug.Log("Hit coin!");
+        }
+    }
 }
