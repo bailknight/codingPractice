@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour {
 	private BoxCollider2D floorCol;
 	private bool isAlive;
 	bool onSpring;
+	int collectiblePoint;
+	Collider2D[] allColliders;
+
 
 //	bool jumpable; 	// 롱점프용 변수
 
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 		m_AimSlider = GetComponentInChildren<Slider> ();
 		capsuleCol = GetComponent<CapsuleCollider2D>();
 		floorCol = GetComponent<BoxCollider2D>();
+		allColliders = GetComponents<Collider2D> ();
     }
 
    public void StartGame()
@@ -54,6 +59,7 @@ public class PlayerController : MonoBehaviour {
 		capsuleCol.isTrigger = false;
 		isAlive = true;
 		onSpring = false;
+		collectiblePoint = 0;
     }
 
     void FixedUpdate()
@@ -131,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 		}      
 	}
 
-	bool IsGrounded()  //플레이어가 떨어지기 시작하거나 플로어콜라이더가 바닥에 닿으면 다시 콜라이더 켜기
+	bool IsGrounded()  //플레이어가 떨어지기 시작하거나// 플로어콜라이더가 바닥에 닿으면 다시 콜라이더 켜기
 	{
 		if (/*rb.velocity.y <= Mathf.Epsilon ||*/ floorCol.IsTouchingLayers (groundLayer.value)) 
 		{
@@ -177,10 +183,21 @@ public class PlayerController : MonoBehaviour {
 		rb.velocity = new Vector2(-2f, 0f);
 		rb.AddForce(Vector2.up*15f, ForceMode2D.Impulse);
 		capsuleCol.isTrigger = true;
+		//Collider2D[] allColliders = GetComponents<Collider2D> ();
+		foreach (Collider2D item in allColliders)
+		{
+			item.enabled = false;
+		}
+		Invoke ("Kill", 1);
 	}
     
 	public void Kill()
     {
+		//Collider2D[] allColliders = GetComponents<Collider2D> ();
+		foreach (Collider2D item in allColliders)
+		{
+			item.enabled = true;
+		}
 		rb.velocity = new Vector2(0f, 0f);
         GameManager.instance.GameOver();
         animator.SetBool("isAlive", false);
@@ -194,9 +211,16 @@ public class PlayerController : MonoBehaviour {
 
 	public float GetDistance()
 	{
-		float traveledDistance = Vector2.Distance (new Vector2 (startingPostion.x, 0), new Vector2 (transform.position.x, 0));
+		float traveledDistance = Vector2.Distance (new Vector2 (startingPostion.x, 0), new Vector2 (transform.position.x, 0)) + collectiblePoint;
 		return traveledDistance;
 	}
+
+	public void CollectiblePoint(int score)
+	{
+		collectiblePoint += score;
+	}
+
+
 
 	// 롱터치 롱점프
 	//	void Update () 

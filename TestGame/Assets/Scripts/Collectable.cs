@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour {
 
+	int score = 10;
 	bool isCollected = false;
 
     void Show()
@@ -24,7 +25,9 @@ public class Collectable : MonoBehaviour {
         isCollected = true;
         Hide();
 		GameManager.instance.CollectedCoin ();
+		PlayerController.instance.CollectiblePoint (score);
     }
+
    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
