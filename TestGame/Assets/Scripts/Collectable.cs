@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour {
 
-    bool isCollected = false;
+	bool isCollected = false;
 
     void Show()
     {
@@ -23,11 +23,13 @@ public class Collectable : MonoBehaviour {
     {
         isCollected = true;
         Hide();
+		GameManager.instance.CollectedCoin ();
     }
-   void OntriggerEnter2D(Collider2D other)
+   void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             Collect();
         }
     }
+}
