@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 		m_CanvasGameObject = GetComponentInChildren<Canvas>();
 		m_AimSlider = GetComponentInChildren<Slider> ();
 		capsuleCol = GetComponent<CapsuleCollider2D>();
-		floorCol = GetComponent<BoxCollider2D>();
+		floorCol = GetComponentInChildren<BoxCollider2D>();
 		allColliders = GetComponents<Collider2D> ();
     }
 
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 		}      
 	}
 
-	bool IsGrounded()  //플레이어가 떨어지기 시작하거나// 플로어콜라이더가 바닥에 닿으면 다시 콜라이더 켜기
+    bool IsGrounded()  //플레이어가 떨어지기 시작하거나// 플로어콜라이더가 바닥에 닿으면 다시 콜라이더 켜기
 	{
 		if (/*rb.velocity.y <= Mathf.Epsilon ||*/ floorCol.IsTouchingLayers (groundLayer.value)) 
 		{

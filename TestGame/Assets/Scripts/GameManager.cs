@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 	public CameraFollow m_cameraFollow;
 	public float startWait;
-	public int collectedCoins = 0;
+    [HideInInspector] public int collectedCoins = 0;
 
     public Canvas menuCanvas;
     public Canvas inGameCanvas;
