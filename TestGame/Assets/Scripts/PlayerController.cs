@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			return;
 		}
-			
+
 		if (GameManager.instance.currentGameState == Gamestate.inGame && isAlive) 
 		{
 			if (Input.GetButtonDown ("Fire1")) 
@@ -222,6 +222,48 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
+	//차지형 롱점프
+//	void Update ()
+//	{
+//		m_AimSlider.value = 0f;
+//		if (GameManager.instance.currentGameState == Gamestate.inGame && !isAlive) 
+//		{
+//			return;
+//		}
+//
+//		if (GameManager.instance.currentGameState == Gamestate.inGame && isAlive) 
+//		{
+//			if (Input.GetButtonDown ("Fire1")) 
+//			{
+//				m_CurrentLaunchForce = 0f;
+//				lastTaptime = Time.time;
+//			}
+//			if (Input.GetButton ("Fire1")) 
+//			{
+//				m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
+//				m_AimSlider.value = m_CurrentLaunchForce;
+//				if (m_CurrentLaunchForce >= 0.5f)
+//					m_CanvasGameObject.enabled = true;
+//				if (m_CurrentLaunchForce >= m_MaxJumpForce) 
+//				{
+//					m_CurrentLaunchForce = m_MaxJumpForce;
+//				}
+//			}
+//			if (Input.GetButtonUp ("Fire1")) 
+//			{
+//				m_CanvasGameObject.enabled = false;
+//				if (Time.time - lastTaptime > m_MaxChargeTime) 
+//				{
+//					Jump (m_MaxJumpForce);
+//				} 
+//				else 
+//				{
+//					Jump (0.7f);
+//				}
+//			}
+//			animator.SetBool ("isGrounded", IsGrounded());
+//		}
+//	}
 
 	// 롱터치 롱점프
 	//	void Update () 
