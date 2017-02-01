@@ -15,6 +15,11 @@ public class CameraFollow : MonoBehaviour {
 		Application.targetFrameRate = 60;
 	}
 
+	void Start()
+	{
+		ResetToStartPosition ();
+	}
+
 	public void RestartPosition(){
 		transform.position = new Vector3(2f,1f,-10f);
 	}

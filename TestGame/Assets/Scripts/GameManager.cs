@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         currentGameState = Gamestate.menu;
+		levelGenerator.GenerateInitialPieces ();
     }
 
     void Update()

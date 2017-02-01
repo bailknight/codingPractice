@@ -13,6 +13,8 @@ public class LevelGenerator : MonoBehaviour {
     //현재 게임중에 표시되는 레벨조각
     public List<LevelPiece> pieces = new List<LevelPiece>();
 
+	private Vector3 spawnPosition = Vector3.zero;
+
     void Awake()
     {
         instance = this;
@@ -20,8 +22,7 @@ public class LevelGenerator : MonoBehaviour {
     
     public void AddPiece()
     {
-		Vector3 spawnPosition = Vector3.zero;
-
+		
 		//위치와 랜덤넘버선택
 		//첫번째 조각은 0번 프리팹으로 고정
         if(pieces.Count == 0)
@@ -36,17 +37,22 @@ public class LevelGenerator : MonoBehaviour {
 		//첫번째 조각을 제외한 리트에서 랜덤으로 선택
         else
         {
-			int randomindex = Random.Range(1, levelPrefabs.Count);
-            //마지막 조각의 exit를 새로운 조각의 스폰포인트로
-            spawnPosition = pieces[pieces.Count - 1].exitPoint.position;
-			//랜덤레벨프리팹의 복사본을 pieces변수에 대입
-			LevelPiece piece = (LevelPiece)Instantiate(levelPrefabs[randomindex]);
-			piece.transform.SetParent(this.transform, false);
-			piece.transform.position = spawnPosition;
-			pieces.Add(piece);
+			CreatPiece ();
         }
     }
-    
+
+	public void CreatPiece()
+	{			
+		int randomindex = Random.Range(1, levelPrefabs.Count);
+		//마지막 조각의 exit를 새로운 조각의 스폰포인트로
+		spawnPosition = pieces[pieces.Count - 1].exitPoint.position;
+		//랜덤레벨프리팹의 복사본을 pieces변수에 대입
+		LevelPiece piece = (LevelPiece)Instantiate(levelPrefabs[randomindex]);
+		piece.transform.SetParent(this.transform, false);
+		piece.transform.position = spawnPosition;
+		pieces.Add(piece);
+	}
+
 	public void Restart ()
 	{
 		//화면상의 모든 pieces를 삭제후 리스트를 초기화
@@ -58,7 +64,7 @@ public class LevelGenerator : MonoBehaviour {
 	
     public void GenerateInitialPieces()
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 3; i++)
         {
             AddPiece();
         }

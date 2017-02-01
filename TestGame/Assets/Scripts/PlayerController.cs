@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour {
 		gameObject.SetActive(false);
 		gameObject.SetActive(true);
         animator.SetBool("isAlive", true);
-        this.transform.position = startingPostion;
 		rb.velocity = new Vector2 (0f, 0f);
+        this.transform.position = startingPostion;
 //		jumpable= false;
 		m_ChargeSpeed = m_MaxJumpForce / m_MaxChargeTime;
 		m_CanvasGameObject.enabled = false;
@@ -208,6 +208,7 @@ public class PlayerController : MonoBehaviour {
 			PlayerPrefs.SetFloat ("highscore", this.GetDistance ());
 		}
     }
+
 
 	public float GetDistance()
 	{
