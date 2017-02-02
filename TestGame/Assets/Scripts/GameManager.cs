@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour {
 		levelGenerator.Restart ();
 		m_cameraFollow.RestartPosition ();
 		yield return new WaitForSeconds (startWait);
+		PlayerController.instance.isAlive = true;
 		SetGameState(Gamestate.inGame);
 	}
 

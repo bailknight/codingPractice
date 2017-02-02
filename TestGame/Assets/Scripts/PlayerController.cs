@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour {
 
 	private CapsuleCollider2D capsuleCol;
 	private BoxCollider2D floorCol;
-	private bool isAlive;
+	[HideInInspector]public bool isAlive;
+	private float score;
+	private float travelDistance;
 	bool onSpring;
 	int collectiblePoint;
 	Collider2D[] allColliders;
@@ -57,9 +59,10 @@ public class PlayerController : MonoBehaviour {
 		m_ChargeSpeed = m_MaxJumpForce / m_MaxChargeTime;
 		m_CanvasGameObject.enabled = false;
 		capsuleCol.isTrigger = false;
-		isAlive = true;
+		isAlive = false;
 		onSpring = false;
 		collectiblePoint = 0;
+		travelDistance = 0;
     }
 
     void FixedUpdate()
@@ -212,13 +215,23 @@ public class PlayerController : MonoBehaviour {
 
 	public float GetDistance()
 	{
-		float traveledDistance = Vector2.Distance (new Vector2 (startingPostion.x, 0), new Vector2 (transform.position.x, 0)) + collectiblePoint;
-		return traveledDistance;
+		if (isAlive && GameManager.instance.currentGameState == Gamestate.inGame) 
+		{
+			travelDistance += 0.1f;
+			score = travelDistance + collectiblePoint;
+			return score;
+		} 
+		else 
+		{
+			return score;
+		}
+//			float traveledDistance = Vector2.Distance (new Vector2 (startingPostion.x, 0), new Vector2 (transform.position.x, 0)) + collectiblePoint;
+//			return traveledDistance;
 	}
 
-	public void CollectiblePoint(int score)
+	public void CollectiblePoint(int point)
 	{
-		collectiblePoint += score;
+		collectiblePoint += point;
 	}
 
 
