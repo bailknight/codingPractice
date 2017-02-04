@@ -32,7 +32,7 @@ public class LevelGenerator : MonoBehaviour {
 
     public void AddPiece()
     {
-		//랜덤넘버선택
+		//첫번째&두번째 조각을 제외한 리스트에서 랜덤으로 선택
 		int randomindex = Random.Range(2, levelPrefabs.Count);
 
 		//첫번째 조각은 0번 프리팹으로 고정
@@ -42,7 +42,7 @@ public class LevelGenerator : MonoBehaviour {
 			CreatPiece (0, spawnPosition);
 		}
 
-		//보너스 점수 도달시 현 조각을 보너스 조각으로 교채
+		//보너스 점수 도달시 두번째 조각을 보너스 조각으로 교채
 		else if (PlayerController.instance.GetDistance () >= bonusLevelPoint) 
 		{	
 			//마지막 조각의 exit를 새로운 조각의 스폰포인트로
@@ -55,7 +55,7 @@ public class LevelGenerator : MonoBehaviour {
 //			CreatPiece (1, spawnPosition);
 		} 
 
-		//첫번째 조각을 제외한 리스트에서 랜덤으로 선택
+		//랜덤레벨프리팹 배치
 		else 
 		{
 			spawnPosition = pieces [pieces.Count - 1].exitPoint.position;
@@ -87,9 +87,11 @@ public class LevelGenerator : MonoBehaviour {
 		for(int i =0; i< (pieces.Count);i++)
 			Destroy(pieces[i].gameObject);
 		pieces.Clear();
+		//게임상의 모든 프로젝타일 프리팹을 삭제
 		GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
 		foreach (GameObject projectile in projectiles)
 			Destroy (projectile);
+		//보너스레벨포인트 초기화
 		bonusLevelPoint = startBonusLevelPoint;
 		GenerateInitialPieces();
 
