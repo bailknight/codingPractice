@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask groundLayer;
 	public float m_MaxJumpForce; 
 	public float m_MaxChargeTime;
+	public AudioSource sfxSource;
+	public AudioClip jumpClip;
+	public AudioClip hitClip;
+	public AudioClip chargeClip;
 
     private Vector3 startingPostion;
     private Rigidbody2D rb;
@@ -62,7 +66,8 @@ public class PlayerController : MonoBehaviour {
 		isAlive = false;
 		onSpring = false;
 		collectiblePoint = 0;
-		travelDistance = 0;
+		travelDistance = 0f;
+		score = 0f;
     }
 
     void FixedUpdate()
@@ -101,13 +106,17 @@ public class PlayerController : MonoBehaviour {
 			{
 				m_CurrentLaunchForce = 0f;
 				lastTaptime = Time.time;
+				sfxSource.clip = chargeClip;
+				sfxSource.Play ();
 			}
 			if (Input.GetButton ("Fire1")) 
 			{
 				m_CurrentLaunchForce += m_ChargeSpeed * Time.deltaTime;
 				m_AimSlider.value = m_CurrentLaunchForce;
-				if (m_CurrentLaunchForce >= 0.5f)
+				if (m_CurrentLaunchForce >= 0.5f) 
+				{
 					m_CanvasGameObject.enabled = true;
+				}
 				if (m_CurrentLaunchForce >= m_MaxJumpForce) 
 				{
 					m_CurrentLaunchForce = m_MaxJumpForce;
@@ -137,6 +146,8 @@ public class PlayerController : MonoBehaviour {
 			rb.velocity = new Vector2 (runningSpeed, 0f);
 			rb.AddForce(Vector2.up * jumpForce*multiplier, ForceMode2D.Impulse);
 			m_CurrentLaunchForce = 0f;
+			sfxSource.clip = jumpClip;
+			sfxSource.Play ();
 		}      
 	}
 
@@ -154,17 +165,6 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
  
-//    bool IsGrounded()
-//    {
-//		if (/*Physics2D.Raycast(capsuleCol.transform.position, Vector2.down, 0.2f, groundLayer.value)||*/ floorCol.IsTouchingLayers (groundLayer.value))
-//		{
-//			return true;
-//		}
-//        else
-//        {
-//			return false;
-//        }
-//    }
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "EnemyKillTrigger")
@@ -185,12 +185,14 @@ public class PlayerController : MonoBehaviour {
 		animator.SetBool("isAlive", false);
 		rb.velocity = new Vector2(-2f, 0f);
 		rb.AddForce(Vector2.up*15f, ForceMode2D.Impulse);
-		capsuleCol.isTrigger = true;
 		//Collider2D[] allColliders = GetComponents<Collider2D> ();
 		foreach (Collider2D item in allColliders)
 		{
 			item.enabled = false;
 		}
+		SoundManager.instance.MuteBGM ();
+		sfxSource.clip = hitClip;
+		sfxSource.Play ();
 		Invoke ("Kill", 1);
 	}
     
@@ -205,6 +207,7 @@ public class PlayerController : MonoBehaviour {
         GameManager.instance.GameOver();
         animator.SetBool("isAlive", false);
 		gameObject.SetActive (false);
+		SoundManager.instance.PlayDeathClip ();
 
 		if (PlayerPrefs.GetFloat ("highscore", 0) < this.GetDistance ()) 
 		{
@@ -225,8 +228,8 @@ public class PlayerController : MonoBehaviour {
 		{
 			return score;
 		}
-//			float traveledDistance = Vector2.Distance (new Vector2 (startingPostion.x, 0), new Vector2 (transform.position.x, 0)) + collectiblePoint;
-//			return traveledDistance;
+			//float traveledDistance = Vector2.Distance (new Vector2 (startingPostion.x, 0), new Vector2 (transform.position.x, 0)) + collectiblePoint;
+			//return traveledDistance;
 	}
 
 	public void CollectiblePoint(int point)
@@ -234,6 +237,17 @@ public class PlayerController : MonoBehaviour {
 		collectiblePoint += point;
 	}
 
+//    bool IsGrounded()
+//    {
+//		if (/*Physics2D.Raycast(capsuleCol.transform.position, Vector2.down, 0.2f, groundLayer.value)||*/ floorCol.IsTouchingLayers (groundLayer.value))
+//		{
+//			return true;
+//		}
+//        else
+//        {
+//			return false;
+//        }
+//    }
 
 	//차지형 롱점프
 //	void Update ()

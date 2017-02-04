@@ -24,6 +24,7 @@ public class Collectable : MonoBehaviour {
     {
 //        isCollected = true;
         Hide();
+		SoundManager.instance.PlayCoinClip ();
 		GameManager.instance.CollectedCoin ();
 		PlayerController.instance.CollectiblePoint (score);
     }

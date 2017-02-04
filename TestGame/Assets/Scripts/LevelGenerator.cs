@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour {
     public static LevelGenerator instance;
 
 	public float bonusLevelPoint;
+	public float bonusLevelPointIncrement;
 
 
     //모든 레벨 조각을 보존
@@ -31,14 +32,13 @@ public class LevelGenerator : MonoBehaviour {
 
     public void AddPiece()
     {
+		//랜덤넘버선택
 		int randomindex = Random.Range(2, levelPrefabs.Count);
-		//위치와 랜덤넘버선택
+
 		//첫번째 조각은 0번 프리팹으로 고정
-		if (pieces.Count == 0) 
+		if (pieces.Count == 0)
 		{
-			//마지막 조각의 exit를 새로운 조각의 스폰포인트로
 			spawnPosition = levelStartPoint.position;
-			//랜덤레벨프리팹의 복사본을 pieces변수에 대입
 			CreatPiece (0, spawnPosition);
 		}
 
@@ -46,12 +46,13 @@ public class LevelGenerator : MonoBehaviour {
 		else if (PlayerController.instance.GetDistance () >= bonusLevelPoint) 
 		{	
 			//마지막 조각의 exit를 새로운 조각의 스폰포인트로
-			spawnPosition = pieces [0].exitPoint.position;
-			Destroy(pieces[1].gameObject);
+			spawnPosition = pieces [1].exitPoint.position;
 			CreatBonusPiece (spawnPosition);
 			spawnPosition = pieces [pieces.Count - 1].exitPoint.position;
 			CreatPiece (randomindex, spawnPosition);
-			bonusLevelPoint += startBonusLevelPoint;
+			bonusLevelPoint += startBonusLevelPoint + bonusLevelPointIncrement;
+//			spawnPosition = pieces [pieces.Count - 1].exitPoint.position;
+//			CreatPiece (1, spawnPosition);
 		} 
 
 		//첫번째 조각을 제외한 리스트에서 랜덤으로 선택
@@ -69,17 +70,15 @@ public class LevelGenerator : MonoBehaviour {
 		piece.transform.SetParent(this.transform, false);
 		piece.transform.position = position;
 		pieces.Add(piece);
-		Debug.Log (spawnPosition);
 	}
 
 	public void CreatBonusPiece(Vector3 position)
 	{			
-		//랜덤레벨프리팹의 복사본을 pieces변수에 대입
 		LevelPiece piece = (LevelPiece)Instantiate(levelPrefabs[1]);
 		piece.transform.SetParent(this.transform, false);
 		piece.transform.position = position;
-		pieces [1] = piece;
-		Debug.Log (spawnPosition);
+		Destroy(pieces[2].gameObject);
+		pieces [2] = piece;
 	}
 
 	public void Restart ()
@@ -88,8 +87,12 @@ public class LevelGenerator : MonoBehaviour {
 		for(int i =0; i< (pieces.Count);i++)
 			Destroy(pieces[i].gameObject);
 		pieces.Clear();
-		GenerateInitialPieces();
+		GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+		foreach (GameObject projectile in projectiles)
+			Destroy (projectile);
 		bonusLevelPoint = startBonusLevelPoint;
+		GenerateInitialPieces();
+
 	}
 	
     public void GenerateInitialPieces()

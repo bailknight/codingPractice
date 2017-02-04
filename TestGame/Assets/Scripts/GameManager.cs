@@ -17,8 +17,9 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public int collectedCoins = 0;
 
     public Canvas menuCanvas;
-    public Canvas inGameCanvas;
+	public GameObject inGameCanvas;
     public Canvas gameOverCanvas;
+	public GameObject waitCanvas;
 
 	private LevelGenerator levelGenerator;
 
@@ -76,26 +77,32 @@ public class GameManager : MonoBehaviour {
         if (newGameState == Gamestate.menu)
         {
             menuCanvas.enabled = true;
-            inGameCanvas.enabled = false;
+			inGameCanvas.SetActive(false);
             gameOverCanvas.enabled = false;
+			waitCanvas.SetActive(false);
         }
         else if (newGameState == Gamestate.inGame)
         {
             menuCanvas.enabled = false;
-            inGameCanvas.enabled = true;
+			inGameCanvas.SetActive(true);
             gameOverCanvas.enabled = false;
+			waitCanvas.SetActive(false);
+			SoundManager.instance.PlayBGM ();
         }
         else if (newGameState == Gamestate.gameOver)
         {
             menuCanvas.enabled = false;
-            inGameCanvas.enabled = false;
+			inGameCanvas.SetActive(false);
             gameOverCanvas.enabled = true;
+			waitCanvas.SetActive(false);
+			SoundManager.instance.MuteBGM ();
         }
 		else if (newGameState == Gamestate.wait)
 		{
 			menuCanvas.enabled = false;
-			inGameCanvas.enabled = true;
+			inGameCanvas.SetActive(false);
 			gameOverCanvas.enabled = false;
+			waitCanvas.SetActive(true);
 		}
         currentGameState = newGameState;
     }
