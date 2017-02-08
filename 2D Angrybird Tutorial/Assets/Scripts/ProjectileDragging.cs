@@ -80,7 +80,8 @@ public class ProjectileDragging : MonoBehaviour {
 	{
 		spring.enabled=true;
 		rb.isKinematic = false;
-		rb.angularDrag = 0.5f;
+		rb.angularDrag = 5f;
+		rb.drag = 0.01f;
 		clickedOn = false;
 	}
 
