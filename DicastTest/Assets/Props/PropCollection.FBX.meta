@@ -1,0 +1,235 @@
+fileFormatVersion: 2
+guid: f10f6c554d544a045a9b9d0b40b6ff2f
+timeCreated: 1489051647
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Particle View 001
+    100002: Prop_Apple1
+    100004: Prop_Apple1_1
+    100006: Prop_Apple1_2
+    100008: Prop_Bread1
+    100010: Prop_Bread1_1
+    100012: Prop_Candle1
+    100014: Prop_Candle2
+    100016: Prop_Candle3
+    100018: Prop_Coin1
+    100020: Prop_CoinPile1
+    100022: Prop_CoinPile2
+    100024: Prop_Dish1
+    100026: Prop_GoldSack1
+    100028: Prop_GrainSack1
+    100030: Prop_IronBind1
+    100032: Prop_MagicBook1
+    100034: Prop_MagicBook1_Open
+    100036: Prop_Meat1
+    100038: Prop_Meat1_1
+    100040: Prop_Potion_Red1
+    100042: Prop_Scroll1
+    100044: Prop_Shield1
+    100046: Prop_ShopBox1
+    100048: Prop_Smallchest1_body
+    100050: Prop_Smallchest1_top
+    100052: Prop_Sword1
+    100054: Prop_Timber1
+    100056: Prop_Wood1
+    100058: Prop_WoodBarrel1
+    100060: Prop_WoodCrate1
+    100062: Prop_WoodCrate2
+    100064: Prop_WoodTable1
+    100066: //RootNode
+    400000: Particle View 001
+    400002: Prop_Apple1
+    400004: Prop_Apple1_1
+    400006: Prop_Apple1_2
+    400008: Prop_Bread1
+    400010: Prop_Bread1_1
+    400012: Prop_Candle1
+    400014: Prop_Candle2
+    400016: Prop_Candle3
+    400018: Prop_Coin1
+    400020: Prop_CoinPile1
+    400022: Prop_CoinPile2
+    400024: Prop_Dish1
+    400026: Prop_GoldSack1
+    400028: Prop_GrainSack1
+    400030: Prop_IronBind1
+    400032: Prop_MagicBook1
+    400034: Prop_MagicBook1_Open
+    400036: Prop_Meat1
+    400038: Prop_Meat1_1
+    400040: Prop_Potion_Red1
+    400042: Prop_Scroll1
+    400044: Prop_Shield1
+    400046: Prop_ShopBox1
+    400048: Prop_Smallchest1_body
+    400050: Prop_Smallchest1_top
+    400052: Prop_Sword1
+    400054: Prop_Timber1
+    400056: Prop_Wood1
+    400058: Prop_WoodBarrel1
+    400060: Prop_WoodCrate1
+    400062: Prop_WoodCrate2
+    400064: Prop_WoodTable1
+    400066: //RootNode
+    2300000: Prop_Apple1
+    2300002: Prop_Apple1_1
+    2300004: Prop_Apple1_2
+    2300006: Prop_Bread1
+    2300008: Prop_Bread1_1
+    2300010: Prop_Candle1
+    2300012: Prop_Candle2
+    2300014: Prop_Candle3
+    2300016: Prop_Coin1
+    2300018: Prop_CoinPile1
+    2300020: Prop_CoinPile2
+    2300022: Prop_Dish1
+    2300024: Prop_GoldSack1
+    2300026: Prop_GrainSack1
+    2300028: Prop_IronBind1
+    2300030: Prop_MagicBook1
+    2300032: Prop_MagicBook1_Open
+    2300034: Prop_Meat1
+    2300036: Prop_Meat1_1
+    2300038: Prop_Potion_Red1
+    2300040: Prop_Scroll1
+    2300042: Prop_Shield1
+    2300044: Prop_ShopBox1
+    2300046: Prop_Smallchest1_body
+    2300048: Prop_Smallchest1_top
+    2300050: Prop_Sword1
+    2300052: Prop_Timber1
+    2300054: Prop_Wood1
+    2300056: Prop_WoodBarrel1
+    2300058: Prop_WoodCrate1
+    2300060: Prop_WoodCrate2
+    2300062: Prop_WoodTable1
+    3300000: Prop_Apple1
+    3300002: Prop_Apple1_1
+    3300004: Prop_Apple1_2
+    3300006: Prop_Bread1
+    3300008: Prop_Bread1_1
+    3300010: Prop_Candle1
+    3300012: Prop_Candle2
+    3300014: Prop_Candle3
+    3300016: Prop_Coin1
+    3300018: Prop_CoinPile1
+    3300020: Prop_CoinPile2
+    3300022: Prop_Dish1
+    3300024: Prop_GoldSack1
+    3300026: Prop_GrainSack1
+    3300028: Prop_IronBind1
+    3300030: Prop_MagicBook1
+    3300032: Prop_MagicBook1_Open
+    3300034: Prop_Meat1
+    3300036: Prop_Meat1_1
+    3300038: Prop_Potion_Red1
+    3300040: Prop_Scroll1
+    3300042: Prop_Shield1
+    3300044: Prop_ShopBox1
+    3300046: Prop_Smallchest1_body
+    3300048: Prop_Smallchest1_top
+    3300050: Prop_Sword1
+    3300052: Prop_Timber1
+    3300054: Prop_Wood1
+    3300056: Prop_WoodBarrel1
+    3300058: Prop_WoodCrate1
+    3300060: Prop_WoodCrate2
+    3300062: Prop_WoodTable1
+    4300000: Prop_Candle2
+    4300002: Prop_Smallchest1_body
+    4300004: Prop_Smallchest1_top
+    4300006: Prop_Coin1
+    4300008: Prop_MagicBook1
+    4300010: Prop_GoldSack1
+    4300012: Prop_MagicBook1_Open
+    4300014: Prop_Apple1
+    4300016: Prop_Meat1
+    4300018: Prop_Apple1_1
+    4300020: Prop_Apple1_2
+    4300022: Prop_Dish1
+    4300024: Prop_Bread1
+    4300026: Prop_Meat1_1
+    4300028: Prop_Bread1_1
+    4300030: Prop_Potion_Red1
+    4300032: Prop_Sword1
+    4300034: Prop_Shield1
+    4300036: Prop_Scroll1
+    4300038: Prop_ShopBox1
+    4300040: Prop_WoodBarrel1
+    4300042: Prop_WoodCrate2
+    4300044: Prop_WoodCrate1
+    4300046: Prop_Timber1
+    4300048: Prop_WoodTable1
+    4300050: Prop_Wood1
+    4300052: Prop_IronBind1
+    4300054: Prop_GrainSack1
+    4300056: Prop_CoinPile1
+    4300058: Prop_CoinPile2
+    4300060: Prop_Candle1
+    4300062: Prop_Candle3
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 15
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
